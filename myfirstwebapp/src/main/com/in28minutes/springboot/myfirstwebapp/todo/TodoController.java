@@ -23,7 +23,8 @@ public class TodoController {
 
 	@RequestMapping("list-todos")
 	public String listAllTodos(ModelMap model) {
-		List<Todo> todos = todoService.findByUserName("in28minutes");
+		String userName = (String)model.get("name");
+		List<Todo> todos = todoService.findByUserName(userName);
 		model.addAttribute("todos", todos);
 		return "listTodos";
 	}
